@@ -91,5 +91,12 @@ def oil(lubrificante):
         alphaT = -5.5e-4
         roh = 875
         cp = 2000
+    elif lubrificante == '150':
+        base = 'MIN'
+        n_astm = 3.67706343
+        m_astm = 9.50358089
+        alphaT = -5.5e-4
+        roh = 875
+        cp = 2000
     return base, m_astm, n_astm, alphaT, roh, cp
 
