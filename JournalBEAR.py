@@ -53,20 +53,24 @@ def CRHsolver(L, D, c, N, W, eta, rho, cp, alpha, T0, ITER):
 
     S = (eta*L*V/(np.pi*W))*(D/(2*c))**2
 
-    if 0.001 < S > 17:
+    if 0.0001 < S > 17:
         sys.exit('Sem solução para as condições de funcionamento escolhidas.')
 
 ## PARÂMETROS DE FUNCIONAMENTO DA CHUMACEIRA ##################################
 
     LD = L/D
 
-    fepsilon = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['eps'])
+    fepsilon = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['eps'], 
+                                    fill_value="extrapolate")
 
-    fphi = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['phi'])
+    fphi = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['phi'],
+                                fill_value="extrapolate")
 
-    ffa = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['Rcfa'])
+    ffa = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['Rcfa'],
+                               fill_value="extrapolate")
 
-    fQa = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['QLcV'])
+    fQa = interpolate.interp1d(tab.DIC[LD]['S'], tab.DIC[LD]['QLcV'],
+                               fill_value="extrapolate")
 
     epsilon = fepsilon(S)
 
